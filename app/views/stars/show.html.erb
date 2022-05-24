@@ -11,4 +11,6 @@
 <% if policy(@star).edit? %>
     <%= link_to "Update", edit_star_path(@star) %>
   <% end %>
-
+<% if policy(@review).new? %>
+    <%= link_to "Review", new_star_review_path(@star) %>
+  <% end %>
