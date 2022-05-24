@@ -1,2 +1,8 @@
-<h1>Stars#edit</h1>
-<p>Find me in app/views/stars/edit.html.erb</p>
+<%= simple_form_for [current_user, @star] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%= f.input :country %>
+  <%= f.input :city %>
+  <%= f.input :price %>
+  <%= f.submit %>
+<% end %>

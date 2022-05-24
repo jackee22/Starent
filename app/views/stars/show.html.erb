@@ -1,2 +1,11 @@
-<h1>Stars#show</h1>
-<p>Find me in app/views/stars/show.html.erb</p>
+<div class="show-card">
+  <div class="star-card-image" style="background-image: url('')">
+    <h2><%= @star.name %></h2>
+    <p><%= @star.category %></p>
+    <p><%= @star.country %></p>
+    <p><%= @star.city %></p>
+    <p><%= @star.price %></p>
+</div>
+
+<%= link_to 'Go back', root_path %>
+<%# <%= link_to "Book '#{@star.name}'",  new_star_reservation_path %>
