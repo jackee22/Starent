@@ -1,26 +1,10 @@
 Rails.application.routes.draw do
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/update'
-  get 'reviews/destroy'
-  get 'reviews/index'
-  get 'reviews/show'
-  get 'reviews/edit'
-  get 'reservations/new'
-  get 'reservations/create'
-  get 'reservations/update'
-  get 'reservations/destroy'
-  get 'reservations/index'
-  get 'reservations/show'
-  get 'reservations/edit'
-  get 'stars/new'
-  get 'stars/create'
-  get 'stars/edit'
-  get 'stars/update'
-  get 'stars/destroy'
-  get 'stars/index'
-  get 'stars/show'
   devise_for :users
   root to: 'pages#home'
+  resources :stars do
+    resources :reviews, only: [ :new, :create, :destroy]
+    resources :reservations, only: [ :new, :create, :update, :destroy]
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
