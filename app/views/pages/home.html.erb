@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+
+
+  <h1>Starent</h1>
+
+    <div class="navbar">
+      <img src="" alt="logo">
+      <!-- add a search form? -->
+      <img src="" alt="avatar">
+    </div>
+
+  <div class="card-star">
+    <% @stars.each do |star| %>
+      <div class="star-card-image" style="background-image: url('<%= star.image %>')"></div>
+      <h4><%= star.name.capitalize %></h4>
+      <p><%= star.country.capitalize %></p>
+      <p><%= star.price %></p>
+      <%= link_to 'More info', star_path(star) %>
+    <% end %>
+  </div>
+
+</div>
