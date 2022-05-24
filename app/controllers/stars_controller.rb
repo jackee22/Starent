@@ -40,8 +40,8 @@ class StarsController < ApplicationController
   private
 
   def set_star
-    authorize @star
     @star = Star.find(params[:id])
+    authorize @star
   end
 
   def star_params

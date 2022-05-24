@@ -6,6 +6,10 @@ class StarPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
   def create?
     user.manager
   end
