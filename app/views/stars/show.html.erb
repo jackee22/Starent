@@ -1,11 +1,14 @@
-<div class="show-card">
-  <div class="star-card-image" style="background-image: url('')">
+<div class='show-card'>
+  <div class='star-card-image'>
     <h2><%= @star.name %></h2>
     <p><%= @star.category %></p>
     <p><%= @star.country %></p>
     <p><%= @star.city %></p>
     <p><%= @star.price %></p>
 </div>
-
 <%= link_to 'Go back', root_path %>
-<%# <%= link_to "Book '#{@star.name}'",  new_star_reservation_path %>
+<%# <%= link_to “Book ‘#{@star.name}’“,  new_star_reservation_path %>
+<% if policy(@star).edit? %>
+    <%= link_to "Update", edit_star_path(@star) %>
+  <% end %>
+

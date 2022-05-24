@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# if Rails.env.development?
+#   User.destroy_all
+#   Star.destroy_all
+#   Review.destroy_all
+#   Reservation.destroy_all
+# end
 
 5.times do
   user = User.new(
@@ -32,7 +38,7 @@ end
 
 1.times do
   star = Star.new(
-    user_id: 11,
+    user_id: 35,
     name: Faker::Name.name,
     category: "actor",
     country: "Belgium",
@@ -43,7 +49,7 @@ end
 end
 1.times do
   star = Star.new(
-    user_id: 12,
+    user_id: 36,
     name: Faker::Name.name,
     category: "actor",
     country: "Belgium",
@@ -54,7 +60,7 @@ end
 end
 1.times do
   star = Star.new(
-    user_id: 13,
+    user_id: 37,
     name: Faker::Name.name,
     category: "actor",
     country: "Belgium",
@@ -65,7 +71,7 @@ end
 end
 1.times do
   star = Star.new(
-    user_id: 14,
+    user_id: 38,
     name: Faker::Name.name,
     category: "actor",
     country: "Belgium",
@@ -76,7 +82,7 @@ end
 end
 1.times do
   star = Star.new(
-    user_id: 15,
+    user_id: 39,
     name: Faker::Name.name,
     category: "actor",
     country: "Belgium",
