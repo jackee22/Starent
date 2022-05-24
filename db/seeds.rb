@@ -12,29 +12,29 @@
 #   Reservation.destroy_all
 # end
 
-# 5.times do
-#   user = User.new(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     username: Faker::Games::Pokemon.name,
-#     email: Faker::Internet.email,
-#     password: "123456",
-#     manager: true
-#   )
-#   user.save!
-# end
+5.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    username: Faker::Games::Pokemon.name,
+    email: Faker::Internet.email,
+    password: "123456",
+    manager: true
+  )
+  user.save!
+end
 
-# 5.times do
-#   user = User.new(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     username: Faker::Games::Pokemon.name,
-#     email: Faker::Internet.email,
-#     password: "123456",
-#     manager: false
-#   )
-#   user.save!
-# end
+5.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    username: Faker::Games::Pokemon.name,
+    email: Faker::Internet.email,
+    password: "123456",
+    manager: false
+  )
+  user.save!
+end
 
 1.times do
   star = Star.new(
