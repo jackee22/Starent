@@ -7,6 +7,7 @@ class StarsController < ApplicationController
   end
 
   def show
+    @review = Review.new(star: @star)
   end
 
   def new
