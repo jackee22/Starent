@@ -17,6 +17,12 @@
                 <% if policy(star).edit? %>
                 <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Update", edit_star_path(star) %></button>
                 <% end %>
+
+                <% if user_signed_in?  %>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Reserve", new_star_reservation_path(star) %></button>
+                <% else %>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Reserve", user_session_path %></button>
+                <% end %>
               </div>
               <small class="text-muted">9 mins</small>
             </div>
