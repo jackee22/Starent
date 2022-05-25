@@ -1,2 +1,11 @@
 <h1>Stars#index</h1>
-<p>Find me in app/views/stars/index.html.erb</p>
+<% list = @stars.where(user: current_user) %>
+<% list.each do |star| %>
+      <h4><%= star.name.capitalize %></h4>
+      <p><%= star.country.capitalize %></p>
+      <p><%= star.price %></p>
+      <%= link_to "Update", edit_star_path(star) %>
+      <%= link_to "Delete", star_path(star), method: :delete,
+            data: { confirm: "Are you sure?" } %>
+      <%= link_to "Home", root_path %>
+    <% end %>

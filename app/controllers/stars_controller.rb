@@ -8,6 +8,7 @@ class StarsController < ApplicationController
 
   def show
     @review = Review.new(star: @star)
+    @reviews = @star.reviews
   end
 
   def new
@@ -18,6 +19,8 @@ class StarsController < ApplicationController
   def create
     @star = Star.new(star_params)
     authorize @star
+    @user = current_user
+    @star.user = @user
     if @star.save
       redirect_to star_path(@star)
     else
@@ -30,12 +33,16 @@ class StarsController < ApplicationController
 
   def update
     @star.update(star_params)
-    redirect_to star_path(@star)
+    if @star.save
+      redirect_to star_path(@star)
+    else
+      render :new
+    end
   end
 
   def destroy
     @star.destroy
-    redirecth_to stars_path
+    redirect_to stars_path
   end
 
   private
