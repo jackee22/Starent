@@ -1,11 +1,34 @@
 <h1>Stars#index</h1>
-<% list = @stars.where(user: current_user) %>
-<% list.each do |star| %>
-      <h4><%= star.name.capitalize %></h4>
-      <p><%= star.country.capitalize %></p>
-      <p><%= star.price %></p>
-      <%= link_to "Update", edit_star_path(star) %>
-      <%= link_to "Delete", star_path(star), method: :delete,
-            data: { confirm: "Are you sure?" } %>
-      <%= link_to "Home", root_path %>
+
+
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <% @stars.each do |star| %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+          <div class="card-body">
+            <p class="card-text"><%= star.name.capitalize %></p>
+            <p class="card-text"><%= star.country.capitalize %></p>
+            <p class="card-text"><%= star.price %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href = '<% root_path %>';">View</button>
+                <% if policy(star).edit? %>
+                <button type="button" class="btn btn-sm btn-outline-secondary">update</button>
+                <% end %>
+              </div>
+              <small class="text-muted">9 mins</small>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
+  </div>
+</div>
+
+
+
+  <%= link_to "Home", root_path %>
