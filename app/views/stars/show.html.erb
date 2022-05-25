@@ -6,7 +6,10 @@
     <p><%= @star.city %></p>
     <p><%= @star.price %></p>
 </div>
-<%= link_to 'Go back', root_path %>
+<% @reviews.each do |review| %>
+      <h4><%= review.content.capitalize %></h4>
+      <p><%="⭐" * review.rating %></p>
+    <% end %>
 <%# <%= link_to “Book ‘#{@star.name}’“,  new_star_reservation_path %>
 <% if policy(@star).edit? %>
     <%= link_to "Update", edit_star_path(@star) %>
@@ -14,3 +17,4 @@
 <% if policy(@review).new? %>
     <%= link_to "Review", new_star_review_path(@star) %>
   <% end %>
+<%= link_to 'Go back', root_path %>

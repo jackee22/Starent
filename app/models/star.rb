@@ -1,6 +1,7 @@
 class Star < ApplicationRecord
   belongs_to :user
   has_many :reservations
+  has_many :reviews
   list = %w[actor model athlete singer pornstar influencer youtuber]
   validates :name, presence: true
   validates :category, presence: true, inclusion: { in: list }
