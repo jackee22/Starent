@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   def new
     @star = Star.find(params[:star_id])
-    authorize @star
+    # authorize @star
     @user = current_user
     @reservation = Reservation.new
   end
@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @star = Star.find(params[:star_id])
     @user = current_user
-    authorize @star
+    # authorize @star
     @reservation.user = @user
     @reservation.star = @star
     if @reservation.save
