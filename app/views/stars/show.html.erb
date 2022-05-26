@@ -1,18 +1,13 @@
 <div class="container" id="container-show">
   <h1><%= @star.name %></h1>
-
-<div class="card">
-  <div class="row">
-    <div class="col">
-      <%= cl_image_tag @star.photo.key, height: 300, width: 400, crop: :fill %>
-    </div>
-  <div class="col">
-    <div class="card-body">
-      <h3 class="card-title"><%= @star.category.capitalize %></h3>
-      <h5><%= @star.country %></h5>
-        <p class="card-text"><%= @star.city %></p>
-        <p class="price"><%= @star.price %>$ / night</p>
-         <%= link_to 'Go back', stars_path, type:"button", class:"btn btn-light" %>
+    <div class='show-card'>
+      <%= cl_image_tag @star.photo.key, height: 300, width: 420, crop: :fill %>
+        <div class="star-info">
+          <h3><%= @star.category.capitalize %></h3>
+          <h5><%= @star.country %></h5>
+          <p><%= @star.city %></p>
+          <p class="price"><%= @star.price %>$ / night</p>
+          <%= link_to 'Go back', stars_path, type:"button", class:"btn btn-light" %>
           <% if user_signed_in?  %>
             <%= link_to "Reserve", new_star_reservation_path(@star), type:"button", class:"btn btn-primary" %>
           <% else %>

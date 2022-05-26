@@ -2,8 +2,12 @@ class StarsController < ApplicationController
   before_action :set_star, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @stars = Star.all
-    @stars = policy_scope(Star).order(created_at: :desc)
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR country ILIKE :query OR category ILIKE :query OR city ILIKE :query"
+      @stars = policy_scope(Star).where(sql_query, query: "%#{params[:query]}%").order(created_at: :desc)
+    else
+      @stars = policy_scope(Star).order(created_at: :desc)
+    end
   end
 
   def show

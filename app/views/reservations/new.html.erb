@@ -1,8 +1,11 @@
 <h1>Reservations#new</h1>
 <p>Find me in app/views/reservations/new.html.erb</p>
 
-<%= simple_form_for [ @star, @reservation ] do |f| %>
-  <%= f.input :start_time %>
-  <%= f.input :end_time %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
+
+<div class="container" id="reseravtion-form">
+  <%= simple_form_for [ @star, @reservation ] do |f| %>
+    <%= f.input :start_time %>
+    <%= f.input :end_time %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
