@@ -45,7 +45,7 @@
               <li><%= link_to "Add a star", new_star_path, class: "dropdown-item"  %></li>
             <% end %>
             <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><%= link_to "My reservations", new_star_path, class: "dropdown-item"  %></li>
+            <li><%= link_to "My reservations", reservations_path, class: "dropdown-item"  %></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
