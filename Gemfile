@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'pundit'
 gem 'country_select'
+gem 'cloudinary', '~> 1.16.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
@@ -38,7 +39,7 @@ gem 'simple_form', github: 'heartcombo/simple_form'
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', groups: [:development, :test]
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
