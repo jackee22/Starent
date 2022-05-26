@@ -27,6 +27,7 @@ class ReservationsController < ApplicationController
   end
 
   def index
+    @reservations = policy_scope(Reservation).order(created_at: :desc)
   end
 
   def show
