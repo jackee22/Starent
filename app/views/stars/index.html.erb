@@ -1,2 +1,37 @@
 <h1>Stars#index</h1>
-<p>Find me in app/views/stars/index.html.erb</p>
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <% @stars.each do |star| %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <%= cl_image_tag star.photo.key, height: 300, width: 400, crop: :fill %>
+
+          <div class="card-body">
+            <p class="card-text"><%= star.name.capitalize %></p>
+            <p class="card-text"><%= star.country.capitalize %></p>
+            <p class="card-text"><%= star.price %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "View", star_path(star), class: "link" %></button>
+                <% if policy(star).edit? %>
+                <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Update", edit_star_path(star), class: "link" %></button>
+                <% end %>
+
+                <% if user_signed_in?  %>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Reserve", new_star_reservation_path(star), class: "link" %></button>
+                <% else %>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Reserve", user_session_path, class: "link" %></button>
+                <% end %>
+              </div>
+              <small class="text-muted">🟢</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+  <%= link_to "Home", root_path %>

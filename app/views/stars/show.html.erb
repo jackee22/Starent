@@ -1,2 +1,30 @@
-<h1>Stars#show</h1>
-<p>Find me in app/views/stars/show.html.erb</p>
+<div class="container">
+  <h1><%= @star.name %></h1>
+    <div class='show-card'>
+      <%= cl_image_tag @star.photo.key, height: 300, width: 400, crop: :fill %>
+        <div class="star-info">
+          <h3><%= @star.category.capitalize %></h3>
+          <h5><%= @star.country %></h5>
+          <p><%= @star.city %></p>
+          <p class="price"><%= @star.price %>$ / night</p>
+          <%= link_to 'Go back', stars_path, type:"button", class:"btn btn-light" %>
+          <% if user_signed_in?  %>
+            <%= link_to "Reserve", new_star_reservation_path(@star), type:"button", class:"btn btn-primary" %>
+          <% else %>
+            <%= link_to "Reserve", user_session_path, type:"button", class:"btn btn-primary" %>
+          <% end %>
+        </div>
+    </div>
+</div>
+
+<% @reviews.each do |review| %>
+      <h4><%= review.content.capitalize %></h4>
+      <p><%="⭐" * review.rating %></p>
+    <% end %>
+
+<% if policy(@star).edit? %>
+    <%= link_to "Update", edit_star_path(@star) %>
+  <% end %>
+<% if policy(@review).new? %>
+    <%= link_to "Review", new_star_review_path(@star) %>
+  <% end %>
