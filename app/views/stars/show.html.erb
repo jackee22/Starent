@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @star.name %></h1>
     <div class='show-card'>
-      <img src="" alt="">
+      <%= cl_image_tag @star.photo.key, height: 300, width: 400, crop: :fill %>
         <div class="star-info">
           <h3><%= @star.category.capitalize %></h3>
           <h5><%= @star.country %></h5>
