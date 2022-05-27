@@ -5,7 +5,7 @@
   <div class="card" >
     <div class="row">
       <div class="col">
-        <%= image_tag @star.photo, class:"card-image"  %>
+        <%= cl_image_tag @star.photo.key, class:"card-image"  %>
       </div>
       <div class="col">
         <div class="card-body">
