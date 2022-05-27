@@ -49,6 +49,10 @@ class StarsController < ApplicationController
     redirect_to stars_path
   end
 
+  def mystars
+    @stars = policy_scope(Star).where(user: current_user)
+  end
+
   private
 
   def set_star
