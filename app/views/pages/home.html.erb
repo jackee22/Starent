@@ -18,7 +18,7 @@
     <% @star.each do |star| %>
       <div class="col">
         <div class="card shadow-sm">
-            <%= cl_image_tag star.photo.key, class:"card-image" %>
+            <%= image_tag star.photo, class:"card-image" %>
           <div class="card-body">
             <h4 class="card-text"><%= star.name.capitalize %></h4>
             <p class="card-price"><%= "#{star.price}$" %></p>
