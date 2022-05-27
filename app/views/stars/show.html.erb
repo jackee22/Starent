@@ -1,44 +1,43 @@
+<br>
+<br>
+<br>
 <div class="container" id="container-show">
-  <h1><%= @star.name %></h1>
-    <div class="card" >
-  <div class="row">
-    <div class="col">
-      <%= image_tag @star.photo, height: 300, width: 420, crop: :fill %>
-    </div>
-    <div class="col">
-      <div class="card-body">
-        <h3><%= @star.category.capitalize %></h3>
-         <h5><%= @star.country %></h5>
-          <p><%= @star.city %></p>
-          <p class="price"><%= @star.price %>$ / night</p>
-          <%= link_to 'Go back', stars_path, type:"button", class:"btn btn-light" %>
-          <% if user_signed_in?  %>
-            <%= link_to "Reserve", new_star_reservation_path(@star), type:"button", class:"btn btn-primary" %>
-          <% else %>
-            <%= link_to "Reserve", user_session_path, type:"button", class:"btn btn-primary" %>
-          <% end %>
+  <div class="card" >
+    <div class="row">
+      <div class="col">
+        <%= image_tag @star.photo, class:"card-image"  %>
       </div>
-    </div>
+      <div class="col">
+        <div class="card-body">
+          <h2><%= @star.name.capitalize %></h2>
+          <h3><%= @star.category.capitalize %></h3>
+          <h5><%= @star.country %></h5>
+            <p><%= @star.city %></p>
+            <p class="price"><%= @star.price %>$ / night</p>
+            <%= link_to 'Go back', stars_path, type:"button", class:"btn btn-light" %>
+            <% if user_signed_in?  %>
+              <%= link_to "Reserve", new_star_reservation_path(@star), type:"button", class:"btn btn-primary" %>
+            <% else %>
+              <%= link_to "Reserve", user_session_path, type:"button", class:"btn btn-primary" %>
+            <% end %>
+        </div>
+      </div>
   </div>
 </div>
 
 <br>
 
-
-
-<div class="card">
-  <div class="card-body">
-  <% @reviews.each do |review| %>
-    <h4 class="card-header"><%= review.user.username %></h4>
-    <h6 class="card-title"><%= review.content.capitalize %></h6>
-    <p class="card-text"><p><%="⭐" * review.rating %></p></p>
-    <% end %>
-    <% if policy(@star).edit? %>
-    <%= link_to "Update", edit_star_path(@star) %>
-  <% end %>
-<% if policy(@review).new? %>
-    <%= link_to "Review", new_star_review_path(@star) %>
-  <% end %>
-</div>
-
-</div>
+<% if @reviews.exists? %>
+  <div class="card">
+    <div class="card-body">
+      <% @reviews.each do |review| %>
+        <h4 class="card-header"><%= review.user.username %></h4>
+        <h6 class="card-title"><%= review.content.capitalize %></h6>
+        <p class="card-text"><p><%="⭐" * review.rating %></p></p>
+        <% end %>
+        <% if policy(@review).new? %>
+        <%= link_to "Review", new_star_review_path(@star) %>
+        <% end %>
+    </div>
+  </div>
+<% end %>

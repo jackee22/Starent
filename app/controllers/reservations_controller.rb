@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
     @reservation.user = @user
     @reservation.star = @star
     if @reservation.save
-      redirect_to root_path
+      redirect_to reservations_path
     else
       render :new
     end
@@ -36,7 +36,6 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @reservations = policy_scope(Reservation).order(created_at: :desc)
   end
 
   def show
