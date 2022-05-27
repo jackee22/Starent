@@ -22,14 +22,22 @@
   </div>
 </div>
 
-<% @reviews.each do |review| %>
-      <h4><%= review.content.capitalize %></h4>
-      <p><%="⭐" * review.rating %></p>
-    <% end %>
+<br>
 
-<% if policy(@star).edit? %>
+
+
+<div class="card">
+  <div class="card-body">
+  <% @reviews.each do |review| %>
+    <h4 class="card-header"><%= review.user.username %></h4>
+    <h6 class="card-title"><%= review.content.capitalize %></h6>
+    <p class="card-text"><p><%="⭐" * review.rating %></p></p>
+    <% end %>
+    <% if policy(@star).edit? %>
     <%= link_to "Update", edit_star_path(@star) %>
   <% end %>
 <% if policy(@review).new? %>
     <%= link_to "Review", new_star_review_path(@star) %>
   <% end %>
+</div>
+</div>
