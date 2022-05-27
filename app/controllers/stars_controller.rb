@@ -13,6 +13,13 @@ class StarsController < ApplicationController
   def show
     @review = Review.new(star: @star)
     @reviews = @star.reviews
+
+    @marker = [
+      {
+        lat: @star.latitude,
+        lng: @star.longitude
+      }
+    ]
   end
 
   def new
