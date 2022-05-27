@@ -1,12 +1,12 @@
-<h1>Stars#index</h1>
+<h1>All our stars</h1>
 <div class="container">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <% @stars.each do |star| %>
       <div class="col">
         <div class="card shadow-sm">
            <%= cl_image_tag star.photo.key, class:"card-image" %>
+           <div class="card-body">
             <h4 class="card-text"><%= star.name.capitalize %></h4>
-            <p class="card-text"><%= star.country.capitalize %></p>
             <p class="card-price"><%= star.price %>$</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
@@ -22,6 +22,7 @@
                 <% end %>
               </div>
               <small class="text-muted">🟢</small>
+              </div>
             </div>
         </div>
       </div>
