@@ -27,9 +27,18 @@
       <p><%="⭐" * review.rating %></p>
     <% end %>
 
-<% if policy(@star).edit? %>
-    <%= link_to "Update", edit_star_path(@star) %>
-  <% end %>
-<% if policy(@review).new? %>
-    <%= link_to "Review", new_star_review_path(@star) %>
-  <% end %>
+<div class="container">
+  <% if policy(@star).edit? %>
+      <%= link_to "Update", edit_star_path(@star) %>
+    <% end %>
+  <% if policy(@review).new? %>
+      <%= link_to "Review", new_star_review_path(@star) %>
+    <% end %>
+</div>
+
+<div class="d-flex align-items-start flex-column" style="height: 300px;">
+  <div class="mb-auto p-2"></div>
+  <div class="p-2"><img src="app/assets/images/page-daccueil.png" alt=""></div>
+  <div class="p-2"><a href="https://www.flaticon.com/fr/icones-gratuites/bouton-daccueil" title="bouton d'accueil icônes">Bouton d'accueil icônes créées par Freepik - Flaticon</a></div>
+
+</div>
