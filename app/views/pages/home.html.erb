@@ -4,7 +4,11 @@
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4">The best website to spend your day with your prefered star, scroll down 👇🏼 and see all the available stars to spend a day with you.</p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Book a star</button>
+     <% if user_signed_in? %>
+      <button type="button" class="btn btn-primary btn-lg px-4 gap-3"><%= link_to "Book a Star", stars_path, class: "link" %></button>
+      <% else %>
+      <button type="button" class="btn btn-primary btn-lg px-4 gap-3"><%= link_to "Book a Star", new_user_session_path, class: "link" %></button>
+      <% end %>
     </div>
   </div>
 </div>
