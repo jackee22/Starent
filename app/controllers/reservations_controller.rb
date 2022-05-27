@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  before_action :set_reservation, only: [ :edit, :update, :destroy ]
   def new
     @star = Star.find(params[:star_id])
     # authorize @star
@@ -21,9 +22,17 @@ class ReservationsController < ApplicationController
   end
 
   def update
+    @reservation.update(reservation_params)
+    if @reservation.save
+      redirect_to reservations_path
+    else
+      render :new
+    end
   end
 
   def destroy
+    @reservation.destroy
+    redirect_to reservations_path
   end
 
   def index
@@ -34,6 +43,14 @@ class ReservationsController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+    @star = @reservation.star
+    authorize @reservation
   end
 
   def reservation_params

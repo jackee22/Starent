@@ -1,5 +1,4 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+
 <div class="container" id="reservations-cards">
 <% current_user.reservations.each do |reservation| %>
 <%# <% raise %>
@@ -14,8 +13,9 @@
         </div>
 
       <div class="notification-actions">
-      <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
-      <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+      <a href=""><%= link_to "Edit",  edit_reservation_path(reservation), class: "link" %> <i class="fas fa-pencil-alt"></i></a>
+      <a href="#"><%= link_to "Delete", reservation_path(reservation), method: :delete,
+            data: { confirm: "Are you sure?" } %><i class="far fa-trash-alt"></i></a>
       </div>
     </div>
   </div>
